@@ -59,17 +59,14 @@ def createContent(template):
 	return content
 
 
-	
+print('Start sending mails')	
 dems,gops=parseJson()
-demContent=createContent(templateDem)
-gopContent=createContent(templateGop)
 for rep in dems:
-	demContent='Dear senator ' + rep['name'] + ',\n' +demContent
+	print('Sending to'+ rep['name'])
+	demContent='Dear senator ' + rep['name'] + ',\n' +createContent(templateDem)
 	sendMail(rep['mail'],demContent,rep['name'])
 for rep in gops:
-	gopContent='Dear senator ' + rep['name'] + ',\n' +gopContent
+	print('Sending to'+ rep['name'])
+	gopContent='Dear senator ' + rep['name'] + ',\n' +createContent(templateGop)
 	sendMail(rep['mail'],gopContent,rep['name'])
 print('done')	
-
-
-	
